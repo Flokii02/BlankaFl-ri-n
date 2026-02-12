@@ -1,0 +1,1276 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Georgia", serif;
+  background: radial-gradient(circle at center, #fdf6f3, #f7ebe6);
+  font-family: 'Cormorant Garamond', serif;
+  cursor: none;
+}
+
+
+.custom-bunny-cursor {
+  position: fixed;
+  font-size: 28px;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+
+/* ❤️ Lebegő szívek – ALULRÓL FEL */
+.floating-hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.floating-hearts span:nth-child(odd) {
+  animation-duration: 14s;
+}
+
+.floating-hearts span:nth-child(even) {
+  animation-duration: 18s;
+}
+
+
+.floating-hearts span {
+  position: absolute;
+  bottom: -40px;              /* 🔥 ALULRÓL INDUL */
+  font-size: 20px;
+  opacity: 0;
+  animation: heartUp 12s linear infinite;
+  filter: blur(0.3px);
+}
+
+/* eltérő pozíciók + időzítés */
+.floating-hearts span:nth-child(1) { left: 10%; animation-delay: 0s; }
+.floating-hearts span:nth-child(2) { left: 22%; animation-delay: 2s; font-size: 16px; }
+.floating-hearts span:nth-child(3) { left: 35%; animation-delay: 4s; }
+.floating-hearts span:nth-child(4) { left: 48%; animation-delay: 1s; font-size: 24px; }
+.floating-hearts span:nth-child(5) { left: 60%; animation-delay: 3s; }
+.floating-hearts span:nth-child(6) { left: 72%; animation-delay: 5s; font-size: 18px; }
+.floating-hearts span:nth-child(7) { left: 85%; animation-delay: 6s; }
+.floating-hearts span:nth-child(8) { left: 95%; animation-delay: 2.5s; }
+
+@keyframes heartUp {
+  0% {
+    transform: translate(0, 0) scale(0.8);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  40% {
+    transform: translate(10px, -40vh) scale(1);
+  }
+  70% {
+    transform: translate(-10px, -80vh) scale(1.1);
+  }
+  100% {
+    transform: translate(5px, -120vh) scale(1.3);
+    opacity: 0;
+  }
+}
+
+.gate,
+.hero-page {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* GATE */
+.gate {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+}
+
+.heart {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+
+.hint {
+  color: #9c7c74;
+  margin-bottom: 25px;
+}
+
+.pin {
+  display: flex;
+  gap: 15px;
+}
+
+.pin input {
+  width: 55px;
+  height: 65px;
+  border-radius: 16px;
+  border: none;
+  background: #f8f2ef;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  font-size: 28px;
+  text-align: center;
+  outline: none;
+}
+
+#error {
+  margin-top: 15px;
+  color: #c05050;
+}
+
+/* HERO PAGE */
+.hero-image {
+  height: 100vh;
+  background:
+    linear-gradient(rgba(40,20,30,0.45), rgba(40,20,30,0.45)),
+    url("mi.JPG") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  padding-left: 8%;
+}
+
+.hero-text {
+  .hero-text {
+  margin-top: 30px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  max-width: 420px;   /* 🔥 ne legyen túl széles */
+  line-height: 1.6;
+  color: rgba(255,255,255,0.85);
+}
+
+}
+
+.hero-content {
+  max-width: 600px;
+  color: #fff;
+  animation: fadeHero 1.8s ease forwards;
+  opacity: 0;
+}
+
+.hero-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.75rem;
+  letter-spacing: 4px;
+  margin-bottom: 25px;
+  color: #f1dede;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 4.2rem;
+  font-weight: 500;
+  line-height: 1.1;
+  color: #ffffff;
+  text-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+.hero-accent {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3.8rem;
+  color: #ffd1dc;
+  display: inline-block;
+  margin-top: 10px;
+}
+.hero-glass {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  padding: 50px 60px;
+  border-radius: 18px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+  max-width: 520px;   /* 🔥 fontos */
+}
+
+
+
+/* Fade-in animáció */
+@keyframes fadeHero {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.letter-section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f7ebe6;
+  padding: 100px 20px;
+}
+
+.letter-container {
+  perspective: 1000px;
+}
+
+/* ===== LEVÉL ===== */
+
+.letter {
+  background: linear-gradient(#fffaf8, #fdf1ed);
+  padding: 60px 70px;
+  max-width: 700px;
+  border-radius: 10px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: transform 1.4s ease;
+}
+
+/* Kibontás */
+.letter.visible {
+  transform: scaleY(1);
+}
+
+/* Lebegés külön wrapperen */
+.letter-wrapper {
+  animation: floatLetter 6s ease-in-out infinite;
+}
+
+/* Lebegő animáció */
+@keyframes floatLetter {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* ===== SZÖVEG STÍLUS ===== */
+
+.letter h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.letter p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.signature {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2rem;
+  text-align: right;
+  margin-top: 30px;
+}
+
+/* ===== SORONKÉNTI MEGJELENÉS ===== */
+
+.line {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+}
+
+.letter.visible .line {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+
+/* ===================================== */
+/* 💕 TIMELINE SZEKCIÓ */
+/* ===================================== */
+
+.timeline {
+  position: relative;
+  padding: 200px 20px 160px 20px;
+  background: linear-gradient(
+    to bottom,
+    #fff4f6 0%,
+    #fde6eb 40%,
+    #e7cfd6 70%,
+    #1c1c1c 100%
+  );
+  overflow: hidden;
+}
+
+/* Finom rózsás fény */
+.timeline::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,192,203,0.15), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255,182,193,0.15), transparent 40%);
+  pointer-events: none;
+}
+
+/* ===================================== */
+/* 💖 CÍM */
+/* ===================================== */
+
+.timeline h2 {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  margin-bottom: 150px;
+  color: #4e3b3b;
+  position: relative;
+  z-index: 2;
+}
+
+/* ===================================== */
+/* 🌸 KÖZÉPSŐ VONAL */
+/* ===================================== */
+
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 360px;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,182,193,0.6),
+    rgba(255,182,193,0.2)
+  );
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: top;
+  transition: transform 1.5s ease;
+  z-index: 0;
+}
+
+.timeline-line.visible {
+  transform: translateX(-50%) scaleY(1);
+}
+
+/* ===================================== */
+/* 💌 IDŐVONAL ELEMEK */
+/* ===================================== */
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 20px 60px;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 0.8s ease;
+}
+
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline-item.left {
+  left: 0;
+  text-align: right;
+}
+
+.timeline-item.right {
+  left: 50%;
+}
+
+/* ===================================== */
+/* ✨ DOBOZ */
+/* ===================================== */
+
+.timeline-content {
+  position: relative;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(8px);
+  padding: 35px;
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.timeline-content:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 70px rgba(0,0,0,0.12);
+}
+
+.timeline-content::after {
+  content: "❤️";
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  font-size: 18px;
+  opacity: 0.8;
+  animation: floatHeart 4s ease-in-out infinite;
+}
+
+.timeline-item.right .timeline-content::after {
+  left: 20px;
+  right: auto;
+}
+
+@keyframes floatHeart {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+/* ===================================== */
+/* ✨ SZÖVEG */
+/* ===================================== */
+
+.timeline-content span {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #d48a96;
+  margin-bottom: 10px;
+}
+
+.timeline-content h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  color: #3e2e2e;
+}
+
+.timeline-content p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #5a4a4a;
+}
+
+/* ===================================== */
+/* 💍 FUTURE BOX */
+/* ===================================== */
+
+.future .timeline-content {
+  background: linear-gradient(
+    135deg,
+    #f5e6c8,
+    #e9d2aa
+  );
+  border: 1px solid rgba(255,182,193,0.3);
+}
+
+/* ===================================== */
+/* 🎬 CINEMATIC FINAL SECTION */
+/* ===================================== */
+
+.final-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Háttér külön layerben */
+.final-bg {
+  position: absolute;
+  inset: 0;
+  background: url("mi3.JPG") center/cover no-repeat;
+  z-index: 0;
+  animation: slowZoom 25s ease-in-out infinite alternate;
+  transform: scale(1.05);
+}
+
+@keyframes slowZoom {
+  from { transform: scale(1.05); }
+  to   { transform: scale(1.15); }
+}
+
+
+/* Sötét filmes overlay */
+.final-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(15,15,15,0.6),
+    rgba(10,10,10,0.85)
+  );
+  z-index: 1;
+}
+
+/* Tartalom */
+.final-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  padding: 40px;
+}
+
+/* Cím */
+.final-content h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.4rem;
+  color: #f5e6c8;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  animation: goldGlow 4s ease-in-out infinite alternate;
+}
+@keyframes goldGlow {
+  from {
+    text-shadow: 0 0 10px rgba(245,230,200,0.2);
+  }
+  to {
+    text-shadow: 0 0 30px rgba(245,230,200,0.6);
+  }
+}
+
+/* Szöveg */
+.final-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  color: #e6dcc6;
+  margin-bottom: 35px;
+  opacity: 0.95;
+}
+
+/* Elválasztó */
+.final-divider {
+  width: 80px;
+  height: 2px;
+  margin: 30px auto;
+  background: linear-gradient(
+    to right,
+    transparent,
+    #f5e6c8,
+    transparent
+  );
+}
+
+/* Aláírás */
+.final-sign {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.8rem;
+  color: #f5e6c8;
+  margin-top: 10px;
+}
+
+.final-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.final-particles span {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #f5e6c8;
+  border-radius: 50%;
+  opacity: 0.4;
+  animation: floatParticles 12s linear infinite;
+}
+
+@keyframes floatParticles {
+  from {
+    transform: translateY(100vh) scale(0.5);
+  }
+  to {
+    transform: translateY(-10vh) scale(1.2);
+  }
+}
+
+.final-grain {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.05;
+}
+
+
+.final-heart {
+  font-size: 60px;
+  margin: 30px 0;
+  animation: heartPulse 3s ease-in-out infinite;
+}
+
+@keyframes heartPulse {
+  0%,100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 10px rgba(255,100,150,0.4));
+  }
+  50% {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 25px rgba(255,120,180,0.9));
+  }
+}
+
+
+/* ===================================== */
+/* 💍 PROPOSAL SECTION */
+/* ===================================== */
+
+.proposal-section {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  background: linear-gradient(
+    135deg,
+    #f3c6cf,
+    #e9aab7,
+    #d98fa0
+  );
+}
+
+/* ===================== */
+/* 💎 GLASS BOX */
+/* ===================== */
+
+.proposal-glass {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  width: 90%;
+  padding: 60px 50px;
+  border-radius: 25px;
+
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255,255,255,0.3);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+
+  text-align: center;
+}
+
+/* ===================== */
+/* ✨ CÍM */
+/* ===================== */
+
+.proposal-glass h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.6rem;
+  color: #4a3a3a;
+  margin-bottom: 20px;
+}
+
+/* ===================== */
+/* 💬 KÉRDÉS KÖZÉPEN */
+/* ===================== */
+
+.proposal-question {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  margin-bottom: 35px;
+  color: #5a4a4a;
+  opacity: 0.9;
+}
+
+/* ===================== */
+/* 💖 GOMBOK */
+/* ===================== */
+
+.proposal-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 35px;
+}
+
+.proposal-btn {
+  padding: 14px 30px;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: all 0.4s ease;
+
+  background: linear-gradient(135deg, #f3a6b2, #d48a96);
+  color: white;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.proposal-btn:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+}
+
+/* ===================== */
+/* 💕 EREDMÉNY SZÖVEG */
+/* ===================== */
+
+.proposal-result {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.3rem;
+  color: #4a3a3a;
+  opacity: 0;
+  transition: all 0.8s ease;
+}
+
+.proposal-result.visible {
+  opacity: 1;
+  transform: translateY(-5px);
+}
+
+.proposal-section::before {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,255,255,0.3), transparent 70%);
+  top: -200px;
+  left: -200px;
+  filter: blur(80px);
+  animation: floatGlow 12s ease-in-out infinite alternate;
+}
+
+@keyframes floatGlow {
+  0% { transform: translate(0,0); }
+  100% { transform: translate(200px,150px); }
+}
+
+
+.proposal-box {
+  z-index: 2;
+}
+
+.proposal-box h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: #4e3b3b;
+  margin-bottom: 10px;
+}
+
+.proposal-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  margin-bottom: 40px;
+  color: #6b5555;
+}
+
+.proposal-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.proposal-btn {
+  position: relative;
+  padding: 16px 32px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  background: linear-gradient(135deg, #f3a6b2, #d48a96);
+  color: white;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.proposal-btn:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
+
+
+.super-yes {
+  background: #d48a96;
+}
+
+/* ===================================== */
+/* 💖 RESULT TEXT */
+/* ===================================== */
+
+.proposal-result {
+  margin-top: 40px;
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.5rem;
+  color: #4e3b3b;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease;
+}
+
+.proposal-result.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===================================== */
+/* 💥 HEART EXPLOSION */
+/* ===================================== */
+
+.heart-explosion {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.heart-particle {
+  position: absolute;
+  font-size: 24px;
+  animation: explode 1.5s ease forwards;
+}
+
+@keyframes explode {
+  from {
+    transform: translate(0,0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translate(var(--x), var(--y)) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* ===================================== */
+/* 🎵 FLOATING MUSIC BUTTON */
+/* ===================================== */
+
+.music-toggle {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  z-index: 999;
+
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+
+  font-size: 20px;
+  color: #4a3a3a;
+
+  transition: all 0.3s ease;
+}
+
+.music-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* Amikor szól a zene */
+.music-toggle.playing {
+  animation: pulseMusic 2.5s infinite ease-in-out;
+}
+
+@keyframes pulseMusic {
+  0%,100% {
+    box-shadow: 0 0 15px rgba(255,150,180,0.4);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255,120,160,0.7);
+  }
+}
+
+/* ===================================== */
+/* 🌌 DESTINY SECTION */
+/* ===================================== */
+
+.destiny-section {
+  position: relative;
+  min-height: 100vh;
+  background: radial-gradient(circle at center, #0f0f1a 0%, #05050a 100%);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+/* Canvas teljes háttér */
+#starsCanvas {
+  position: absolute;
+  inset: 0;
+}
+
+/* Tartalom */
+.destiny-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 40px;
+}
+
+/* Cím */
+.destiny-content h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #f5e6c8;
+}
+
+/* Alcím */
+.destiny-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  margin-bottom: 60px;
+  color: #d8cfc0;
+}
+
+/* ===================================== */
+/* 🕰 COUNTER */
+/* ===================================== */
+
+.love-counter h3 {
+  font-family: 'Cormorant Garamond', serif;
+  margin-bottom: 30px;
+  font-size: 1.4rem;
+  color: #f5e6c8;
+}
+
+.counter-box {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.counter-box div {
+  text-align: center;
+}
+
+.counter-box span {
+  display: block;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.counter-box small {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+
+/* =============================== */
+/* 💖 LOVE FINAL SECTION */
+/* =============================== */
+
+.love-final-section {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  background: linear-gradient(
+    135deg,
+    #ffd6e8,
+    #ffe6b3,
+    #ffd6f5
+  );
+}
+
+/* Első szöveg blokk */
+.love-content {
+  position: relative;
+  z-index: 2;
+  transition: opacity 1.5s ease;
+}
+
+.love-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: #4b2e2e;
+  margin-bottom: 20px;
+}
+
+.love-ring {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.love-heart {
+  font-size: 60px;
+  animation: lovePulse 2s infinite ease-in-out;
+}
+
+@keyframes lovePulse {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+/* Második szöveg */
+.love-second-text {
+  position: absolute;
+  font-family: 'Great Vibes', cursive;
+  font-size: 3rem;
+  color: #4b2e2e;
+  opacity: 0;
+  transition: opacity 2s ease;
+  z-index: 3;
+}
+
+/* Nyuszi */
+.love-bunny {
+  position: absolute;
+  font-size: 50px;
+  bottom: 50px;
+  left: 50px;
+  z-index: 4;
+  transition: transform 0.1s linear;
+  pointer-events: none;
+}
+
+/* Canvas */
+#loveCanvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* ===================================== */
+/* 📱 GLOBAL RESPONSIVE */
+/* ===================================== */
+
+@media (max-width: 768px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  section {
+    padding: 80px 20px !important;
+  }
+
+  h1, h2 {
+    font-size: 2rem !important;
+    line-height: 1.2;
+  }
+
+  p {
+    font-size: 1rem !important;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .hero-text-block {
+    max-width: 100%;
+    padding: 30px;
+    text-align: center;
+  }
+
+  .hero-text-block h1 {
+    font-size: 2.2rem;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .letter {
+    padding: 35px 25px;
+  }
+
+  .letter h3 {
+    font-size: 1.6rem;
+  }
+
+  .signature {
+    font-size: 1.8rem;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .timeline-line {
+    left: 20px;
+    transform: scaleY(0);
+  }
+
+  .timeline-line.visible {
+    transform: scaleY(1);
+  }
+
+  .timeline-item {
+    width: 100%;
+    padding-left: 60px;
+    text-align: left;
+  }
+
+  .timeline-item.left,
+  .timeline-item.right {
+    left: 0;
+  }
+
+  .timeline-content {
+    padding: 25px;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .proposal-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .proposal-buttons button {
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .final-content h2 {
+    font-size: 2rem;
+  }
+
+  .final-sub {
+    font-size: 1rem;
+  }
+
+  .final-sign {
+    font-size: 2rem;
+  }
+
+}
+/* ===================================== */
+/* 📱 DESTINY SECTION RESPONSIVE */
+/* ===================================== */
+
+@media (max-width: 768px) {
+
+  .destiny-section {
+    padding: 100px 20px;
+    min-height: auto;
+  }
+
+  .destiny-content {
+    padding: 20px;
+  }
+
+  .destiny-content h2 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .destiny-sub {
+    font-size: 1rem;
+    margin-bottom: 40px;
+  }
+
+  /* Counter cím */
+  .love-counter h3 {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+
+  /* Counter doboz */
+  .counter-box {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .counter-box div {
+    background: rgba(255,255,255,0.08);
+    padding: 15px 0;
+    border-radius: 12px;
+  }
+
+  .counter-box span {
+    font-size: 2.2rem;
+  }
+
+  .counter-box small {
+    font-size: 0.8rem;
+  }
+
+}
+
+.bunny-paw {
+  position: fixed;
+  font-size: 18px;
+  pointer-events: none;
+  opacity: 0.8;
+  animation: pawFade 2s forwards;
+}
+
+@keyframes pawFade {
+  to {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+
+#secretTrigger {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 9999;
+
+  opacity: 0.35;
+
+  /* Finom háttér hogy ne vesszen el */
+  background: rgba(0,0,0,0.25);
+  backdrop-filter: blur(4px);
+  padding: 6px 10px;
+  border-radius: 20px;
+
+  transition: all 0.3s ease;
+}
+
+/* Hoverre élénkebb */
+#secretTrigger:hover {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+
+
+.mini-game {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9998;
+}
+
+.mini-game-box {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.mini-game button {
+  margin: 10px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
